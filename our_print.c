@@ -9,30 +9,46 @@ int _printf(const char *format, ...)
 {
 	int coll = 0;
 	va_list args;
-
 	va_start(args, format);
 
-	for (; *format; format++)
+	while (*format != '\0')
 	{
-		if (*format == '%' && format[1])
+		if (*format == '%')
 		{
 			format++;
+			if (*format == '\0')
+				break;
+
 			if (*format == 'c')
-				coll += putchar(va_arg(args, int));
+			{
+				int m = va_arg(args, int);
+				putchar(m);
+				coll++;
+			}
 			else if (*format == 's')
 			{
 				char *s = va_arg(args, char *);
-
-				for (; *s; coll++, s++)
-					putchar(*s);
+				while (*s)
+				{
+					putchar(*s++);
+					coll++;
+				}
 			}
 			else if (*format == '%')
-				coll += putchar('%');
+			{
+				putchar('%');
+				coll++;
+			}
+			format++;
 		}
 		else
-			coll += putchar(*format);
+		{
+			putchar(*format++);
+			coll++;
+		}
 	}
 
 	va_end(args);
 	return (coll);
 }
+
