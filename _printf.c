@@ -29,12 +29,12 @@ while (*format != '\0')
 	}
 	else if (*format == 's')
 	{
-		char *s  = va_arg(cyn, *char);
+		char *s  = va_arg(cyn, char *);
 
-		while (s != '\0')
+		while (*s != '\0')
 		{
-		putchar(s);
-		coll++;
+		putchar(*s);
+		s++;
 		}
 	}
 	else if (*format == '%')
