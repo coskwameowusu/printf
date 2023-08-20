@@ -23,7 +23,7 @@ int _printf(const char *format, ...)
 				{
 					int m = va_arg(cyn, int);
 
-					putchar(m);
+					cc_putchar(m);
 					coll++;
 				}
 				if (format[a] == 's')
@@ -31,15 +31,15 @@ int _printf(const char *format, ...)
 					int *s = va_arg(cyn, int *);
 
 					while (*s != '\0')
-						putchar(*s);
+						cc_putchar(*s);
 						s++;
 				}
 				if (format[a] == '%')
-					putchar('%');
+					cc_putchar('%');
 					coll++;
 			}
 			else
-				putchar(format[a]);
+				cc_putchar(format[a]);
 				coll++;
 		format++;
 		}
