@@ -3,7 +3,6 @@
   * _printf - A function that produces output according to a format
   * Authors - Collins & Cynthia
   * @format: format to be printed
-  * @coll: number of characters printed
   * Return: Number of characters printed
   */
 int _printf(const char *format, ...)
@@ -32,10 +31,8 @@ int _printf(const char *format, ...)
 					int *s = va_arg(cyn, int *);
 
 					while (*s != '\0')
-					{
 						putchar(*s);
 						s++;
-					}
 				}
 				if (format[a] == '%')
 					putchar('%');
