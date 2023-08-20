@@ -1,5 +1,4 @@
-#include <unistd.h>
-
+#include "main.h"
 /**
   * cc_putchar - A function that prints single characters to stdout
   * @c: character to print
@@ -8,5 +7,5 @@
   */
 int cc_putchar(char c)
 {
-	return (write(1, &c, 1));
-}
+        return (write(1, &c, 1));
+}                  
