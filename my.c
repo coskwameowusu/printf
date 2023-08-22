@@ -16,50 +16,50 @@ int _printf(const char *format, ...)
 	{
 		while (*format != '\0')
 		{
-		if (*format == '%')
-		{
-			format++;
-			if (*format == '\0')
+			if (*format == '%')
+			{
+				format++;
+				if (*format == '\0')
 				break;
 
-			if (*format == 'c')
-			{
-				int m = va_arg(Cyn, int);
-				putchar(m);
-				coll++;
-			}
-			else if (*format == 's')
-			{
-				char *s = va_arg(Cyn, char *);
-				while (*s)
+				if (*format == 'c')
 				{
-					putchar(*s++);
+					int m = va_arg(Cyn, int);
+					putchar(m);
 					coll++;
 				}
-			}
-			else if (*format == 'd')
-			{
-				int num = va_arg(Cyn, int);
-				coll += printf("%d", num);
-			}
-			else if (*format == '%')
-			{
-				putchar('%');
-				coll++;
+				else if (*format == 's')
+				{
+					char *s = va_arg(Cyn, char *);
+					while (*s)
+					{
+					putchar(*s++);
+					coll++;
+					}
+				}
+				else if (*format == 'd')
+				{
+					int num = va_arg(Cyn, int);
+					coll += printf("%d", num);
+				}
+				else if (*format == '%')
+				{
+					putchar('%');
+					coll++;
+				}
+				else
+				{
+					printf("%%%c", *format);
+					coll += 2;
+				}
+				format++;
 			}
 			else
 			{
-				printf("%%%c", *format);
-				coll += 2;
+				putchar(*format++);
+				coll++;
 			}
-			format++;
 		}
-		else
-		{
-			putchar(*format++);
-			coll++;
-		}
-	}
 	}
 	va_end(Cyn);
 	return (coll);
