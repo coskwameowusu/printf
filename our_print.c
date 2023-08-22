@@ -34,10 +34,20 @@ int _printf(const char *format, ...)
 					coll++;
 				}
 			}
+			else if (*format == 'd')
+			{
+				int num = va_arg(args, int);
+				coll += printf("%d", num);
+			}
 			else if (*format == '%')
 			{
 				putchar('%');
 				coll++;
+			}
+			else
+			{
+				printf("%%%c", *format);
+				coll +=27;
 			}
 			format++;
 		}
