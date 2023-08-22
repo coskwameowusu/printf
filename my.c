@@ -40,7 +40,9 @@ int _printf(const char *format, ...)
 				putchar('%');
 				coll++;
 			}
+		format++;
 		}
+		
 		else
 		{
 			putchar(*format++);
