@@ -10,7 +10,7 @@ int _printf(const char *format, ...)
 	int coll = 0;
 	va_list Cyn;
 	va_start(Cyn, format);
-	if (format != NULL)
+	if (format == NULL)
 	{
 		return (-1);
 	}
