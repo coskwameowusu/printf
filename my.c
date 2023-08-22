@@ -60,8 +60,7 @@ int _printf(const char *format, ...)
 			coll++;
 		}
 	}
-	}
 	va_end(Cyn);
 	return (coll);
 }
-
+}
