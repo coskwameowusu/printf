@@ -1,31 +1,26 @@
 #include "main.h"
 
 /**
- * integer - Prints an integer and returns its length.
- * @number: The integer to be printed.
- * Return: The number of characters printed.
- */
-int integer(int number1)
-{
-	return printf("%d", number1);
-}
-
-/**
- * _printf - a function that...
+ * _printf - a function that produces output according to a format.
  * @format: The format string.
- * Return: The total number of characters printed.
+ * Return: Number of characters printed.
  */
 int _printf(const char *format, ...)
 {
 	int coll = 0;
 	va_list Cyn;
 	va_start(Cyn, format);
-
+	if (format == NULL)
+	{
+		return (-1);
+	}
 	while (*format != '\0')
 	{
 		if (*format == '%')
 		{
 			format++;
+			if (*format == '\0')
+				break;
 			if (*format == 'c')
 			{
 				int m = va_arg(Cyn, int);
@@ -41,10 +36,10 @@ int _printf(const char *format, ...)
 					coll++;
 				}
 			}
-			else if (*format == 'd' || *format == 'i')
+			else if (*format == 'd')
 			{
 				int num = va_arg(Cyn, int);
-				coll += integer(num);
+				coll += printf("%d", num);
 			}
 			else if (*format == '%')
 			{
@@ -53,8 +48,8 @@ int _printf(const char *format, ...)
 			}
 			else
 			{
-			printf("Invalid conversion specifier: %%%c", *format);
-				coll += 27;
+				printf("%%%c", *format);
+				coll += 2;
 			}
 			format++;
 		}
@@ -64,7 +59,6 @@ int _printf(const char *format, ...)
 			coll++;
 		}
 	}
-
 	va_end(Cyn);
 	return (coll);
 }
