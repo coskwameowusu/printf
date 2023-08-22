@@ -8,7 +8,7 @@
 int _printf(const char *format, ...)
 {
 	int coll = 0;
-	va_list args;
+	va_list Cyn;
 	va_start(Cyn, format);
 
 	while (*format != '\0')
@@ -18,7 +18,6 @@ int _printf(const char *format, ...)
 			format++;
 			if (*format == '\0')
 				break;
-
 			if (*format == 'c')
 			{
 				int m = va_arg(Cyn, int);
