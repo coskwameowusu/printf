@@ -49,7 +49,7 @@ int _printf(const char *format, ...)
 			else
 			{
 				printf("%%%c", *format);
-				coll += 27;
+				coll += 2;
 			}
 			format++;
 		}
