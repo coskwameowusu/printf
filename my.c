@@ -1,10 +1,9 @@
-#include "main.h"
-
 /**
  * _printf - a function that produces output according to a format.
  * @format: The format string.
  * Return: Number of characters printed.
  */
+#include "main.h"
 int _printf(const char *format, ...)
 {
 	int coll = 0;
@@ -14,51 +13,38 @@ int _printf(const char *format, ...)
 
 	if (format != NULL)
 	{
-		while (*format != '\0')
+		if (*format == '%')
 		{
-			if (*format == '%')
+			format++;
+			if (*format == '\0')
+			break;
+			if (*format == 'c')
 			{
-				format++;
-				if (*format == '\0')
-				break;
+				int m = va_arg(Cyn, int);
 
-				if (*format == 'c')
-				{
-					int m = va_arg(Cyn, int);
-					putchar(m);
-					coll++;
-				}
-				else if (*format == 's')
-				{
-					char *s = va_arg(Cyn, char *);
-					while (*s)
-					{
-					putchar(*s++);
-					coll++;
-					}
-				}
-				else if (*format == 'd')
-				{
-					int num = va_arg(Cyn, int);
-					coll += printf("%d", num);
-				}
-				else if (*format == '%')
-				{
-					putchar('%');
-					coll++;
-				}
-				else
-				{
-					printf("%%%c", *format);
-					coll += 2;
-				}
-				format++;
-			}
-			else
-			{
-				putchar(*format++);
+				putchar(m);
 				coll++;
 			}
+			else if (*format == 's' && *format != '\0')
+			{
+				char *s = va_arg(Cyn, char *);
+
+				while (*s)
+				{
+				putchar(*s++);
+				coll++;
+				}
+			}
+			else if (*format == '%')
+			{
+				putchar('%');
+				coll++;
+			}
+		}
+		else
+		{
+			putchar(*format++);
+			coll++;
 		}
 	}
 	va_end(Cyn);
