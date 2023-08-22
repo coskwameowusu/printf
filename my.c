@@ -1,49 +1,55 @@
+#include "main.h"
+
 /**
  * _printf - a function that produces output according to a format.
  * @format: The format string.
  * Return: Number of characters printed.
  */
-#include "main.h"
 int _printf(const char *format, ...)
 {
 	int coll = 0;
-	va_list Cyn;
-
+	va_list args;
 	va_start(Cyn, format);
 
-	if (format != NULL)
+	while (*format != '\0')
 	{
-		while (*format != '\0')
-		{
 		if (*format == '%')
 		{
 			format++;
 			if (*format == '\0')
-			break;
+				break;
+
 			if (*format == 'c')
 			{
 				int m = va_arg(Cyn, int);
-
 				putchar(m);
 				coll++;
 			}
-			else if (*format == 's' && *format != '\0')
+			else if (*format == 's')
 			{
 				char *s = va_arg(Cyn, char *);
-
 				while (*s)
 				{
-				putchar(*s++);
-				coll++;
+					putchar(*s++);
+					coll++;
 				}
+			}
+			else if (*format == 'd')
+			{
+				int num = va_arg(Cyn, int);
+				coll += printf("%d", num);
 			}
 			else if (*format == '%')
 			{
 				putchar('%');
 				coll++;
 			}
-		format++;
-		}
+			else
+			{
+				printf("%%%c", *format);
+				coll += 27;
+			}
+			format++;
 		}
 		else
 		{
@@ -51,6 +57,8 @@ int _printf(const char *format, ...)
 			coll++;
 		}
 	}
+
 	va_end(Cyn);
 	return (coll);
 }
+
