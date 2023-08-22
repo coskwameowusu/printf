@@ -8,8 +8,12 @@
 int _printf(const char *format, ...)
 {
 	int coll = 0;
-	va_list args;
-	va_start(args, format);
+	va_list Cyn;
+	va_start(Cyn, format);
+	if (format == NULL)
+	{
+		return (-1);
+	}
 
 	while (*format != '\0')
 	{
@@ -21,13 +25,13 @@ int _printf(const char *format, ...)
 
 			if (*format == 'c')
 			{
-				int m = va_arg(args, int);
+				int m = va_arg(Cyn, int);
 				putchar(m);
 				coll++;
 			}
 			else if (*format == 's')
 			{
-				char *s = va_arg(args, char *);
+				char *s = va_arg(Cyn, char *);
 				while (*s)
 				{
 					putchar(*s++);
@@ -36,7 +40,7 @@ int _printf(const char *format, ...)
 			}
 			else if (*format == 'd')
 			{
-				int num = va_arg(args, int);
+				int num = va_arg(Cyn, int);
 				coll += printf("%d", num);
 			}
 			else if (*format == '%')
@@ -47,7 +51,7 @@ int _printf(const char *format, ...)
 			else
 			{
 				printf("%%%c", *format);
-				coll +=27;
+				coll += 2;
 			}
 			format++;
 		}
@@ -58,7 +62,7 @@ int _printf(const char *format, ...)
 		}
 	}
 
-	va_end(args);
+	va_end(Cyn);
 	return (coll);
 }
 
