@@ -9,14 +9,13 @@ int _printf(const char *format, ...)
 {
 	int coll = 0;
 	va_list Cyn;
-	va_start(Cyn, format);
-	if (format == NULL)
-	{
-		return (-1);
-	}
 
-	while (*format != '\0')
+	va_start(Cyn, format);
+
+	if (format != NULL)
 	{
+		while (*format != '\0')
+		{
 		if (*format == '%')
 		{
 			format++;
@@ -61,7 +60,7 @@ int _printf(const char *format, ...)
 			coll++;
 		}
 	}
-
+	}
 	va_end(Cyn);
 	return (coll);
 }
