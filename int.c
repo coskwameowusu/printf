@@ -1,7 +1,7 @@
 /**
   * _printf - A function to print to stdout
   * Authors - Dahesey and Collins
-  * @format: a pointer to elements of the function 
+  * @format: a pointer to elements of the function
   * Return: 0
   */
 #include "main.h"
@@ -20,12 +20,13 @@ int _printf(const char *format, ...)
 			if (*format == 'd' || *format == 'i')
 			{
 				int x = va_arg(colly, int);
+
 				counter += printf("%d", x);
 			}
 			else
 			{
 			putchar('%');
-                	counter++;
+			counter++;
 			}
 		}
 		else
