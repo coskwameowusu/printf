@@ -6,12 +6,15 @@
  * Return: Number of characters printed.
  */
 int _printf(const char *format, ...)
-{
+{	
 	int coll = 0;
 	va_list args;
 
 	va_start(args, format);
-
+	if (format == NULL)
+	{
+		return (-1);
+	}
 	while (*format != '\0')
 	{
 		if (*format == '%')
