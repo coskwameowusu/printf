@@ -5,7 +5,6 @@
   * Return: 0
   */
 #include "main.h"
-int _printf(const char *format, ...)
 {
 	int counter = 0;
 	va_list colly;
