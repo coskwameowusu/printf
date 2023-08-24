@@ -1,18 +1,23 @@
 #include "main.h"
 
 /**
- * main - Entry point
+ * main - check the code
  *
- * Return: Always 0
+ * Return: Always 0.
  */
 int main(void)
 {
-    	int len = 0;
-    	int len2 = 0;
-
-	_printf("Length:[%d, %i]\n", len, len);
-    	printf("Length:[%d, %i]\n", len2, len2);
-    	_printf("Negative:[%d]\n", -762534);
-    	printf("Negative:[%d]\n", -762534);
-	return (0);
+    print_number(98);
+    _putchar('\n');
+    print_number(402);
+    _putchar('\n');
+    print_number(1024);
+    _putchar('\n');
+    print_number(0);
+    _putchar('\n');
+    print_number(-98);
+    _putchar('\n');
+    print_number(5670987);
+    _putchar('\n');
+    return (0);
 }

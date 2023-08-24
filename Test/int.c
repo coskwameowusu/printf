@@ -1,32 +1,31 @@
 /**
-  * _printf - A function to print to stdout
+  * cc_putchar - A function to print to stdout
   * Authors - Dahesey and Collins
-  * @format: a pointer to elements of the function 
+  * @x: a pointer to elements of the function 
   * Return: 0
   */
 #include "main.h"
-int _printf(const char *format, ...)
+void print_number(int x)
 {
-	int counter = 0;
-	va_list colly;
+	unsigned int y = 1, z = x, numb = x;
 
-	va_start(colly, format);
-
-	while (format != NULL)
+	if (x < 0)
 	{
-		if (*format == '%')
-		{
-			format++;
-			if (*format == 'd')
-			{
-				int x = va_arg(colly, int);
-
-				putchar(x);
-				counter++;
-			}
-		}
-		format++;
+		_putchar('-');
+		numb = -x;
+		z = -z;
 	}
-	va_end(colly);
-	return (counter);
+	while (z / 10 != 0)
+	{
+		y = y * 10;
+		z = z / 10;
+	}
+	while (y != 0)
+	{
+		int a = numb / y;
+
+		_putchar('0' + a);
+		numb = numb % y;
+		y = y / 10;
+	}
 }
