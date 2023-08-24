@@ -6,11 +6,12 @@
  * Return: Number of characters printed.
  */
 int _printf(const char *format, ...)
-{	
+{
 	int coll = 0;
 	va_list args;
 
 	va_start(args, format);
+
 	if (format == NULL)
 	{
 		return (-1);
@@ -24,7 +25,7 @@ int _printf(const char *format, ...)
 			{
 				int m = va_arg(args, int);
 
-				putchar(m);
+				_putchar(m);
 				coll++;
 			}
 			else if (*format == 's')
@@ -33,27 +34,26 @@ int _printf(const char *format, ...)
 
 				while (*s)
 				{
-					putchar(*s);
+					_putchar(*s);
 					s++;
 					coll++;
 				}
 			}
 			else if (*format == '%')
 			{
-				putchar('%');
+				_putchar('%');
 				coll++;
 			}
 			format++;
 		}
 		else
 		{
-			putchar(*format);
+			_putchar(*format);
 			format++;
 			coll++;
 		}
 	}
 
 	va_end(args);
-	return coll;
+	return (coll);
 }
-

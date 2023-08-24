@@ -5,6 +5,7 @@
 #include <stdio.h>
 
 int _printf(const char *format, ...);
-int cc_putchar(char c);
+int _putchar(char x);
+void print_number(int x);
 
 #endif /* MAIN_H */
